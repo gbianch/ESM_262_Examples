@@ -1,0 +1,35 @@
+---
+title: "creating function"
+author: "Grace Bianchi"
+date: "2023-02-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+km_hr_to_ms <- function(speed_km){
+  speed_m = (speed_km/3.6)
+  return(speed_m)
+}
+
+speed_m_s <- c(30, km_hr_to_ms(c(80, 120, 40, 5)))
+               
+
+power<- power_req(speed_m_s, m = 31752, a =16)
+
+power_df <- data.frame(x = power, y = speed_m_s)
+
+```
+
+
+
+```{r}
+ggplot(power_df, aes(x = speed_m_s, y = power)) +
+  geom_point() 
+```
+
